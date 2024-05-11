@@ -34,3 +34,25 @@ export var postTask = function (content, successCB, errorCB) {
 
   $.ajax(request);
 };
+
+export var deleteTask = function (taskId, successCB, errorCB) {
+  var request = {
+    type: 'DELETE',
+    url: `api/tasks/${taskId}?api_key=1`,
+    success: successCB,
+    error: errorCB
+  }
+
+  $.ajax(request);
+};
+
+export var completeTask = function (taskId, successCB, errorCB) {
+  var request = {
+    type: 'PATCH',
+    url: `api/tasks/${taskId}/complete?api_key=1`,
+    success: successCB,
+    error: errorCB
+  }
+
+  $.ajax(request);
+};
