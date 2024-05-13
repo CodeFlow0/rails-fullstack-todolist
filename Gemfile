@@ -50,6 +50,8 @@ gem 'bootsnap', '>= 1.13', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', '~> 11.1.3', platforms: %i[mri mingw x64_mingw]
+  gem 'rubocop-rails', require: false
+  gem 'eslint-rails'
 
   # Added by Altcademy.com
   gem 'awesome_print', '~> 1.9'

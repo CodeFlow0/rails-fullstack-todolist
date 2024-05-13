@@ -48,8 +48,8 @@ export var deleteTask = function (taskId, successCB, errorCB) {
 
 export var completeTask = function (taskId, successCB, errorCB) {
   var request = {
-    type: 'PATCH',
-    url: `api/tasks/${taskId}/complete?api_key=1`,
+    type: 'PUT',
+    url: `api/tasks/${taskId}/mark_complete?api_key=1`,
     success: successCB,
     error: errorCB
   }

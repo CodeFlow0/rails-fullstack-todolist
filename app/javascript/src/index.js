@@ -21,7 +21,7 @@ $(document).on('turbolinks:load', function() {
             </div>
             <div>
               <button class="btn btn-danger delete-btn" data-id="${task.id}">Delete</button>
-              <input type="checkbox" id="task-${task.id}" ${task.completed ? 'checked' : ''} />
+              <input type="checkbox" class="complete-checkbox" id="task-${task.id}" ${task.completed ? 'checked' : ''} data-id="${task.id}" />
             </div>
           </div>`;
         }
@@ -41,12 +41,22 @@ $(document).on('turbolinks:load', function() {
 
       $(".complete-checkbox").change(function() {
         var taskId = $(this).attr("data-id");
-        completeTask(taskId, function() {
-          // Update the task's appearance based on completion status
-          $(`.task[data-id="${taskId}"]`).toggleClass("completed");
-        }, function(error) {
-          console.error("Error marking task complete:", error);
-        });
+        var checked = $(this).prop("checked");
+        if (checked) {
+          completeTask(taskId, function() {
+            // Update the task's appearance based on completion status
+            $(`.task[data-id="${taskId}"]`).addClass("completed");
+          }, function(error) {
+            console.error("Error marking task complete:", error);
+          });
+        } else {
+          completeTask(taskId, function() {
+            // Update the task's appearance based on completion status
+            $(`.task[data-id="${taskId}"]`).removeClass("completed");
+          }, function(error) {
+            console.error("Error marking task active:", error);
+          });
+        }
       });
     });
   }
@@ -65,5 +75,18 @@ $(document).on('turbolinks:load', function() {
 
   $("#show-active").click(function() {
     loadTasks('active');
+  });
+
+  // Form submission event listener
+  $("#create-task").submit(function(event) {
+    event.preventDefault();
+    var content = $("#new-task-content").val();
+    postTask(content, function() {
+      // After successful task creation, reload tasks
+      loadTasks('all');
+      $("#new-task-content").val(""); // Clear input field
+    }, function(error) {
+      console.error("Error creating task:", error);
+    });
   });
 });
