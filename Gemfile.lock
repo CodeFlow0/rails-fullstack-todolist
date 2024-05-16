@@ -257,7 +257,6 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.4)
     strscan (3.0.4)
     thor (1.2.1)
     tilt (2.0.11)
@@ -283,6 +282,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-21
+  x86_64-darwin-22
   x86_64-linux
 
 DEPENDENCIES
@@ -307,7 +307,6 @@ DEPENDENCIES
   sass-rails (~> 6.0)
   spring (< 3.0)
   spring-watcher-listen (~> 2.0.1)
-  sqlite3 (~> 1.4)
   web-console (>= 4.2)
   webpacker (~> 5.0)
   webrick (~> 1.7)

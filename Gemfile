@@ -50,8 +50,8 @@ gem 'bootsnap', '>= 1.13', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', '~> 11.1.3', platforms: %i[mri mingw x64_mingw]
-  gem 'rubocop-rails', require: false
   gem 'eslint-rails'
+  gem 'rubocop-rails', require: false
 
   # Added by Altcademy.com
   gem 'awesome_print', '~> 1.9'
@@ -72,7 +72,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.1'
 
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3', '~> 1.4'
+  # gem 'sqlite3', '~> 1.4'
 end
 
 group :production do
